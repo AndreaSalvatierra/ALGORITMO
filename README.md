@@ -1,0 +1,2 @@
+# ALGORITMO
+#include "stdafx.h"
