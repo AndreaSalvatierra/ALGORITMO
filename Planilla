@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-float IVA=0.13,AFP=0.121,SB,SM=1400,SN,suma,SP;
+float IVA=0.13,AFP=0.121,SB,SM=1440,SN,suma,SP;
 int N,i=1;
 suma=0;
 cout<<"Ingrese el numero de Empleados: ";
@@ -17,14 +17,17 @@ while(i<=N)
 	cin>>SB;
 	if(SB>(2*SM))
 	{
-		SN=SB-(SB*0.13)-(SB*0.121);
-		suma=suma+SN;
+		SN=SB-(SB*IVA)-(SB*AFP);
+		if(SB>15000)
+		{
+			SN=SB-(SB*AFP)-(SB*IVA)-(SB*0.01);
+		}
 	}
 	else
 	{
-		SN=SB-(SB*0.121);
-		suma=suma+SN;
+		SN=SB-(SB*AFP);
 	}
+		suma=suma+SN;
 	i++;
 }
 SP=suma/N;
