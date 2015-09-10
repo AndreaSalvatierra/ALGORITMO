@@ -1,65 +1,141 @@
 #include "stdafx.h"
-#include <iostream>
 #include "conio.h"
+#include <iostream>
+#include <string>
+#include "math.h"
 #include "stdlib.h"
+#define TAM 50
+
 using namespace std;
-void main()
+
+void cargar_vector(int A[], int n);
+void cargar_vectors(string nombre[], int n);
+void mostrar_vector(int A[], int n);
+void ordenar_vector(int A[], int n);
+int busqueda_binaria(int A[], int n, int k);
+void arrays_paralelos(string nombre[], int nota[], int n);
+void mostrar_paralelos(string nombre[], int nota[], int n);
+
+
+void main ()
 {
-	int opcion,A,B;
-	float lado,area,promedio,n1,n2,n3;
+	int opcion, n, sol, a,b, A[TAM];
+	string nombre[TAM];
+
 	do
 	{
 		cout<<"\t MENU \n\n";
-		cout<<"1.Area del Cuadrado\n";
-		cout<<"2.Promedio de tres numeros\n";
-		cout<<"3.Mayor de dos numeros\n";
-		cout<<"0.Salir\n";
-		cout<<"Elige una opcion: ";
+		cout<<"1 . Cargar Vector Entero \n";
+		cout<<"2 . Cargar Vector String \n";
+		cout<<"3 . Mostrar Vector Entero \n";
+		cout<<"4 . Clasificar Vector Paralelo\n ";
+		cout<<"5 . Mostrar Vector Paralelo \n";
+		cout<<"6 . Busqueda Binaria \n";
+		cout<<"0 . Salir\n";
+		cout<<"Opcion: ";
 		cin>>opcion;
-		switch(opcion)
+
+		switch (opcion)
 		{
-		case 1 : cout<<"Area del Cuadrado\n"; 
+		case 1:  cout<<"Cargar Vector Entero \n";
 				 {
-					 cout<<"Ingrese Lado: ";
-					 cin>>lado;
-					 area=lado*lado;
-					 cout<<"El Area es: "<<area;
+					do
+					{
+					cout<<"ingrese el numero de elementos: ";
+					cin>>n;
+					}
+				while ((n>TAM) || (n<0));
+				cargar_vector(A,n);
 				 }
-				 getch(); break;
-		case 2 : cout<<"Promedio de tres numeros\n";
-				 {
-					 cout<<"Ingrese numero 1: ";
-					 cin>>n1;
-					 cout<<"Ingrese numero 2: ";
-					 cin>>n2;
-					 cout<<"Ingrese numero 3: ";
-					 cin>>n3;
-					 promedio=(n1+n2+n3)/3;
-					 cout<<"El promedio es: "<<promedio;
-				 }
-				 getch(); break;
-		case 3 : cout<<"Mayor de dos numeros\n";
-				 {
-					 cout<<"Ingrese primer numero: ";
-					 cin>>A;
-					 cout<<"Ingrese segundo numero: ";
-					 cin>>B;
-					 if(A>B)
-					 {
-						 cout<<"El mayor es: "<<A;
-					 }
-					 else
-					 {
-						 cout<<"El mayor es: "<<B;
-					 }
-				 }
-				 getch(); break;
-		case 0 : cout<<"Salir\n";
-			getch(); break;
-		default : cout<<"Error\n";
+				getch(); break;
+
+		case 2: do {
+					cout<<"ingrese el numero de elementos : ";
+					cin>>n;
+				}
+				while ((n>TAM) || (n<0));
+				cargar_vectors(nombre,n);
+				break;
+
+		case 3: 
+				mostrar_vector(A,n);
+				break;
+
+		case 4: 
+				arrays_paralelos(nombre, A, n);
+				break;
+
+		case 5: 
+				mostrar_paralelos(nombre, A, n);
+				
+//		case 6:
+//				z=busqueda_binaria(A, n);
+//				cout<<"el dato esta en la posicion: "<<z;
+//				break;
+				
+		case 0:
+				cout<<"fin del programa";
+				break;
+
+		default:
+				cout<<"opcion invalida :";
+				break;
+
 		}
+		getch();
 		system("cls");
+	}while (op!=0);
+}
+
+void cargar_vector(int A[], int n)
+{
+	for (int i=0; i<n; i++)
+	{
+		cout<<"A["<<i<<"] = ";
+		cin>>A[i];
 	}
-	while(opcion!=0);
-	getch();
+}
+
+void cargar_vectors(string nombre[], int n)
+{
+	cin.ignore();
+	for (int i=0; i<n; i++)
+	{
+		cout<<"nombre["<<i<<"] = ";
+		getline(cin, nombre[i]);
+	}
+}
+
+void mostrar_vector(int A[], int n)
+{
+	for (int i=0; i<n; i++)
+	{
+		cout<<"A["<<i<<"] = "<<A[i]<<endl;
+	}
+}
+
+void arrays_paralelos(string nombre[], int nota[], int n)
+{
+	int aux;
+	string auxs;
+	for (int i=0; i< n-1; i++)
+		for (int j=i+1; j<n; j++)
+			if (nombre[i] > nombre[j])
+			{
+				aux=nota[j];
+				nota[j]=nota[i];
+				nota[i]=aux;
+				auxs=nombre[j];
+				nombre[j]=nombre[i];
+				nombre[i]=auxs;
+
+			}
+}
+
+void mostrar_paralelos(string nombre[], int nota[], int n)
+{
+	cout<<"No. \t Nombre y Apellido \t Nota"<<endl;
+	cout<<"ªªªªªªªªªªªªªªªªªªªªªªªªªªªºªªªªªºªªªªªªªªªªª"<<endl;
+	for (int i=0; i<n; i++)
+		cout<<i+1<<" "<<nombre[i]<<"\t"<<nota[i]<<endl;
 }
