@@ -17,10 +17,9 @@ void arrays_paralelos(string nombre[], int nota[], int n);
 void mostrar_paralelos(string nombre[], int nota[], int n);
 void ordenar_vector(int A[], int n);
 
-
 void main ()
 {
-	int opcion, n, sol, a,b, A[TAM],clave,z;
+	int opcion, n,z, sol, a,b, A[TAM],clave;
 	string nombre[TAM];
 
 	do
@@ -30,8 +29,8 @@ void main ()
 		cout<<"3 . Mostrar Vector Entero \n";
 		cout<<"4 . Clasificar Vector Paralelo \n";
 		cout<<"5 . Mostrar Vector Paralelo \n";
-		cout<<"6 . Busqueda Binaria \n";	
-		cout<<"7 . Clasificacion por Insercion \n";
+		cout<<"6 . Busqueda Binaria \n";
+		cout<<"7 . Clasificacion por insercion \n";
 		cout<<"0 . Salir\n";
 		cout<<"Opcion: ";
 		cin>>opcion;
@@ -65,24 +64,29 @@ void main ()
 		case 5: 
 				mostrar_paralelos(nombre, A, n);
 				getch(); break;
+				
 		case 6:
-				cout<<"Elemento a buscar: ";
+			    cout<<"Ingrese el numero que desea buscar: ";
 				cin>>clave;
 				z=busqueda_binaria(A,n,clave);
 				if(z==-1)
-					cout<<"No Existe";
+					cout<<"No existe: ";
 				else
-					cout<<"el dato esta en la posicion: "<<z<<"\t"<<A[z];
+					cout<<"El dato esta en la posicion: "<<z<<"\t"<<A[z];
 				getch(); break;
-		case 7: 
-					cargar_vector(A,n);
-					ordenar_vector(A,n) ;
-					cout<<"Clasificacion por insercion:\n";
-					mostrar_vector(A,n);
-			    getch(); break;
+		case 7:
+                do {
+					cout<<"Ingrese el numero de elementos: ";
+					cin>>n;
+				   }
+				while ((n>TAM) || (n<0));
+				cargar_vector(A,n);                 
+ 				ordenar_vector(A, n);
+				getch(); break;
+			   
 				
 		case 0:
-				cout<<"fin del programa";
+				cout<<"Fin del programa";
 				getch(); break;
 
 		default:
@@ -90,7 +94,6 @@ void main ()
 				getch(); break;
 
 		}
-		getch();
 		system("cls");
 	}while (opcion!=0);
 }
@@ -142,10 +145,10 @@ void arrays_paralelos(string nombre[], int nota[], int n)
 
 void mostrar_paralelos(string nombre[], int nota[], int n)
 {
-	cout<<"No. \t Nombre y Apellido \t Nota"<<endl;
-	cout<<"ªªªªªªªªªªªªªªªªªªªªªªªªªªªºªªªªªºªªªªªªªªªªª"<<endl;
+	cout<<"No. Nombre y Apellido  Nota"<<endl;
+	cout<<"ªªªªªªªªªªªªªªªªªªªªªªªªªªª"<<endl;
 	for (int i=0; i<n; i++)
-		cout<<i+1<<" "<<nombre[i]<<"\t"<<nota[i]<<endl;
+		cout<<i+1<<"\t"<<nombre[i]<<"\t\t"<<nota[i]<<endl;
 }
 int busqueda_binaria(int A[], int n, int clave)
 {
@@ -156,7 +159,7 @@ int busqueda_binaria(int A[], int n, int clave)
       if (A[medio] == clave)
          return medio;
       else
-         if (clave < A[medio])
+         if (clave< A[medio])
             fin=medio-1;
          else
             ini=medio+1;
@@ -165,14 +168,13 @@ int busqueda_binaria(int A[], int n, int clave)
 }
 void ordenar_vector(int A[], int n)
 {
-  int aux;
-    for(int i=0;i<n;i++)
-		for(int j=i+1;j<=n-1;j++)
-       if (A[j]<A[i])
-	   
-	   { aux=A[i];
-	     A[i]=A[j];
-		 A[j]=aux;
-
-	   }
+	int aux;
+		for(int i=0;i<n;i++)
+			for(int j=i+1;j<n;j++)
+		if(A[j]<A[i])
+          {aux=A[i];
+		   A[i]=A[j];
+		   A[j]=aux;
+		  
+}
 }
