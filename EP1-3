@@ -1,0 +1,27 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#define TAM 50
+
+using namespace std;
+void validar(string pass,bool &val);
+void main()
+{
+	bool bandera;
+	string password;
+	getline(cin,password);
+	validar(password,bandera);
+	if(bandera)
+		cout<<"Contraseña valida";
+	else
+		cout<<"Contraseña invalida";
+}
+void validar(string pass,bool &val)
+{
+	int longitud;
+	val=false;
+	longitud=pass.length();
+	for(int i=0;i<longitud;i++)
+	{
+		if((pass[i]=='A'||
