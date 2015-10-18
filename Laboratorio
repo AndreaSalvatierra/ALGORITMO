@@ -1,32 +1,31 @@
 #include "stdafx.h"
 #include <iostream>
 #include "conio.h"
-#include <string.h>
 
-#define fil 20
-#define col 20
+#define MAXROW 20
+#define MAXCOL 20
 
 struct telemento
-{int mat[fil][col];
+{int mat[MAXROW][MAXCOL];
 };
 using namespace std;
-void llenar_auto(telemento M[fil][col], int n);
-void mostrar2 (telemento M[fil][col], int n);
-void suma(telemento M[fil][col], int n);
+void cargar(telemento M[MAXROW][MAXCOL], int n);
+void mostrar(telemento M[MAXROW][MAXCOL], int n);
+void suma(telemento M[MAXROW][MAXCOL], int n);
 void main()
 {
-	telemento MATRIX[fil][col];
+	telemento MATRIX[MAXROW][MAXCOL];
 	int n;
 	cout<<"Ingrese numero de filas: ";
 	cin>>n;
-	llenar_auto(MATRIX,n);
-	mostrar2(MATRIX,n);
+	cargar(MATRIX,n);
+	mostrar(MATRIX,n);
 	cout<<"La suma es: ";
 	suma(MATRIX,n);
 	getch();
 
 }
-void llenar_auto(telemento M[fil][col], int n)
+void cargar(telemento M[MAXROW][MAXCOL], int n)
 {int i,j,k,l;
 	for(i=0;i<n;i++)
 		{for(j=0;j<n;j++)
@@ -41,7 +40,7 @@ void llenar_auto(telemento M[fil][col], int n)
 	}
 }
  
-void mostrar2 (telemento M[fil][col], int n)
+void mostrar(telemento M[MAXROW][MAXCOL], int n)
 {int i, j,k,l;
 	for(i=0;i<n;i++)
 		{for(j=0;j<n;j++)
@@ -50,10 +49,10 @@ void mostrar2 (telemento M[fil][col], int n)
 					 {cout<<M[i][j].mat[k][l]<<"\t";
 					 }cout<<endl;
 				}cout<<"     "<<endl;
-			}
+			}cout<<endl;
 		}
 }
-void suma(telemento M[fil][col], int n)
+void suma(telemento M[MAXROW][MAXCOL], int n)
 {int i,j,k,l,suma;
 	for(i=0;i<n;i++)
 		{for(j=0;j<n;j++)
