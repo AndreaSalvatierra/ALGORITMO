@@ -1,0 +1,33 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+
+#define MAX 10
+using namespace std;
+struct vector
+{
+	string vec[MAX];
+};
+void recibe(string v[],int n);
+void cargar(vector A[MAX][MAX],int n);
+void main()
+{
+	string v[MAX];
+	vector A[MAX][MAX]; 
+	int n;
+	cout<<"Ingrese numero de elementos: ";
+	cin>>n;
+	recibe(v,n);
+	cargar(A,n);
+}
+void recibe(string v[],int n)
+{
+	for(int i=0;i<n;i++)
+		getline(cin,v[i]);
+}
+void cargar(vector A[MAX][MAX],int n)
+{
+	int i;
+		for(i=0;i<n;i++)
+}
