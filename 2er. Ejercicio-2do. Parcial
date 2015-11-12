@@ -9,25 +9,38 @@ struct vector
 {
 	string vec[MAX];
 };
-void recibe(string v[],int n);
-void cargar(vector A[MAX][MAX],int n);
+void cargar(vector A[MAX][MAX],int n,string vec[]);
+void oredenar(vector A[MAX][MAX],int n,string vec[]);
 void main()
 {
-	string v[MAX];
+	string vec[MAX];
 	vector A[MAX][MAX]; 
 	int n;
 	cout<<"Ingrese numero de elementos: ";
 	cin>>n;
-	recibe(v,n);
-	cargar(A,n);
+	cargar(A,n,vec);
 }
-void recibe(string v[],int n)
+
+void cargar(vector A[MAX][MAX],int n,string vec[])
 {
-	for(int i=0;i<n;i++)
-		getline(cin,v[i]);
-}
-void cargar(vector A[MAX][MAX],int n)
-{
-	int i;
+	cin.ignore();
+	int i,j,k;
 		for(i=0;i<n;i++)
+			{for(j=0;j<n;j++)
+				{for(k=0;k<n;k++)
+					{
+					cout<<"A["<<i<<"]["<<j<<"].v["<<k<<"]=";
+					getline(cin,vec[i]);
+					
+					}
+				}
+			}
+}
+void oredenar(vector A[MAX][MAX],int n,string vec[])
+{
+	int i,j,k;
+		for(i=0;i<n;i++)
+			for(j=0;j<n;j++)
+				for(k=0;k<n;k++)
+					
 }
